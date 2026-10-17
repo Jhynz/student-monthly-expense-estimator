@@ -17,26 +17,21 @@ SELECTION_PATH = ROOT / "model_selection.json"
 st.set_page_config(page_title="Student Expense Estimator", page_icon="📊")
 st.title("Student Monthly Expense Estimator")
 st.write(
-    "Explore a machine-learning estimate of the total monthly expenses reported "
-    "by students with similar survey responses."
+    "Estimate a reported total from student survey responses."
 )
 st.warning(
-    "This dataset contains 99 usable target records and no itemized expense amounts, "
-    "student identifiers, income, or budget. It cannot identify a student's largest "
-    "expense, determine whether a budget is adequate, or support sponsor monitoring. "
-    "The source does not document the target's currency or scale. On the held-out test "
-    "set, the selected model's MAE was slightly lower than the baseline, but its RMSE "
-    "and R² were worse."
+    "Experimental only: the dataset has 99 target values, and the target's currency "
+    "and scale are undocumented. The available fields cannot rank expense categories, "
+    "assess budget adequacy, or support student monitoring."
 )
 st.caption(
-    "The form follows the observed age and study-year ranges. Several inputs are "
-    "survey indicators, not spending amounts."
+    "Profile categories and yes/no answers are not itemized spending amounts."
 )
 
 if not MODEL_PATH.exists() or not SELECTION_PATH.exists():
     st.error(
-        "The trained model artifacts are missing. Run "
-        "`python -m src.analysis` from the project folder first."
+        "The trained model artifacts are missing. Run the analysis module "
+        "from the project folder first."
     )
     st.stop()
 
@@ -99,16 +94,12 @@ if submitted:
         st.caption(
             f"Selected model: {selection['selected_model']}. "
             f"Mean outer cross-validation MAE: {validation_mae:.1f} dataset units "
-            "(a typical validation error, not a personalized confidence interval)."
+            "(mean validation error, not an individual prediction interval)."
         )
         st.info(
-            "Treat this as an educational model output, not financial advice. "
-            "The model reflects a very small, duplicated, observational dataset and "
-            "may perform poorly for new students."
+            "Not financial advice. Test-set R² was negative, and performance for new "
+            "students has not been established."
         )
 
 st.divider()
-st.caption(
-    "This demonstration predicts only a single total. It does not store form inputs "
-    "or identify individual respondents."
-)
+st.caption("Form inputs are used for prediction and are not stored.")
