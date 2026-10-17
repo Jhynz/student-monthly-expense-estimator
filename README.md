@@ -4,6 +4,8 @@ An educational Streamlit app that estimates the total monthly expenses reported
 by students with similar survey responses. It uses a saved Ridge Regression
 model trained for the course project.
 
+Live app: <https://student-monthly-expense-estimator-ktjcgpba2dihst9ekyvcmx.streamlit.app/>
+
 ## Important limitations
 
 - The Kaggle listing describes the data as an open-source survey, but does not
