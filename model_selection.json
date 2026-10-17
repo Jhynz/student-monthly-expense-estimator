@@ -1,0 +1,28 @@
+{
+  "random_state": 42,
+  "split_method": "80/20 GroupShuffleSplit by identical predictor profile",
+  "train_records": 80,
+  "test_records": 19,
+  "train_profile_groups": 34,
+  "test_profile_groups": 9,
+  "profile_overlap": 0,
+  "outer_cv": "5-fold GroupKFold on training partition; hyperparameters tuned only within each outer training fold",
+  "selection_metric": "mean outer-fold MAE",
+  "selected_model": "Ridge Regression",
+  "selected_model_parameters_refit_on_training": {
+    "regressor__alpha": 10.0
+  },
+  "outer_cv_selected_model_mae_mean": 45.6459,
+  "outer_cv_selected_model_mae_std": 15.2603,
+  "test_metrics_selected_model": {
+    "mae": 64.24985460810508,
+    "rmse": 74.75531263632448,
+    "r2": -0.11953207159545798
+  },
+  "test_metrics_training_mean_baseline": {
+    "mae": 67.77631578947368,
+    "rmse": 72.03843546476094,
+    "r2": -0.0396351623196447
+  },
+  "test_evaluated_once_after_selection": true
+}
